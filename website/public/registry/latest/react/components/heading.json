@@ -4,7 +4,7 @@
   "variants": [
     {
       "file": "primitives/heading.tsx",
-      "content": "import { forwardRef } from 'react'\nimport { Text, type TextProps } from './text'\n\nexport interface HeadingProps extends TextProps<React.ElementType> {}\n\nexport const Heading = forwardRef<HTMLHeadingElement, HeadingProps>((props, ref) => (\n  <Text as=\"h2\" variant=\"heading\" ref={ref} {...props} />\n))\n\nHeading.displayName = 'Heading'\n",
+      "content": "import { styled } from 'styled-system/jsx'\nimport { type TextVariantProps, text } from 'styled-system/recipes'\nimport type { ComponentProps, StyledComponent } from 'styled-system/types'\n\ntype TextProps = TextVariantProps & { as?: React.ElementType }\n\nexport type HeadingProps = ComponentProps<typeof Heading>\nexport const Heading = styled('h2', text, {\n  defaultProps: { variant: 'heading' },\n}) as StyledComponent<'h2', TextProps>\n",
       "exports": "export { Heading, type HeadingProps } from './heading'"
     }
   ]
